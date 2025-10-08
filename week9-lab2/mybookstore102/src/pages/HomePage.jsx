@@ -9,7 +9,7 @@ const HomePage = () => {
       id: 1, 
       title: 'The Great Gatsby', 
       author: 'F. Scott Fitzgerald', 
-      price: 299, 
+      price: 2999, 
       originalPrice: 399,
       coverImage: '/images/books/gatsby.jpg',
       category: 'Classic',
@@ -33,7 +33,7 @@ const HomePage = () => {
       title: 'To Kill a Mockingbird', 
       author: 'Harper Lee', 
       price: 320, 
-      coverImage: '/images/books/davinci.jpg',
+      coverImage: '/images/books/mockingbird.jpg',
       category: 'Classic',
       rating: 4.6,
       reviews: 189
