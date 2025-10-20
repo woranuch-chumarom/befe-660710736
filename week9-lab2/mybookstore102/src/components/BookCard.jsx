@@ -123,7 +123,7 @@ const BookCard = ({ book }) => {
               className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 
                 ${isInCart 
                   ? 'bg-green-500 text-white hover:bg-green-600' 
-                  : 'bg-viridian-600 text-white hover:bg-viridian-700'
+                  : 'bg-green-500 text-white hover:bg-green-700'
                 }`}>
               {isInCart ? 'ในตะกร้า' : 'เพิ่มลงตะกร้า'}
             </button>

@@ -464,6 +464,7 @@ func main() {
 		api.GET("/books/featured", getFeaturedBooks)
 		api.GET("/books/new", getNewBooks)
 		api.GET("/books/discounted", getDiscountedBooks)
+		
 
 	}
 
