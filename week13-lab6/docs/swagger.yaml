@@ -1,0 +1,177 @@
+basePath: /api/v1
+definitions:
+  main.Book:
+    properties:
+      author:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      isbn:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+      updated_at:
+        type: string
+      year:
+        type: integer
+    type: object
+  main.ErrorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a simple example of using Gin with Swagger.
+  title: Simple API Example
+  version: "1.0"
+paths:
+  /books:
+    get:
+      description: Get details of a books
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Book'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get all book
+      tags:
+      - Books
+    post:
+      description: Create book details (title, author, isbn, year, price) by book
+        ID
+      parameters:
+      - description: Create book data
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/main.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Book'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Create a book by ID
+      tags:
+      - Books
+  /books/{id}:
+    delete:
+      description: Delete book details by book ID
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Book'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Delete a book by ID
+      tags:
+      - Books
+    get:
+      description: Get details of a book by ID
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Book'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get book by ID
+      tags:
+      - Books
+    put:
+      description: Update book details (title, author, isbn, year, price) by book
+        ID
+      parameters:
+      - description: Book ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated book data
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/main.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Book'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Update a book by ID
+      tags:
+      - Books
+  /books/new:
+    get:
+      consumes:
+      - application/json
+      description: Get latest books ordered by created date
+      parameters:
+      - description: Number of books to return (default 5)
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Book'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/main.ErrorResponse'
+      summary: Get new books
+      tags:
+      - Books
+swagger: "2.0"
